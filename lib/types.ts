@@ -9,12 +9,6 @@ export interface NewsItem {
   summaries: Record<ModelName, string>;
 }
 
-export interface CompareAnswer {
-  newsId: string;
-  category: Category;
-  selectedModel: ModelName;
-}
-
 export interface RatingAnswer {
   newsId: string;
   category: Category;
@@ -26,4 +20,23 @@ export interface RatingAnswer {
   }>;
 }
 
-export type SurveyMode = 'compare' | 'rate';
+export interface Demographics {
+  age: number;
+  gender: 'male' | 'female' | 'other';
+  occupation: string;
+}
+
+export type Gender = 'male' | 'female' | 'other';
+
+export const OCCUPATIONS = [
+  'นักเรียน/นักศึกษา',
+  'ข้าราชการ/พนักงานรัฐวิสาหกิจ',
+  'พนักงานบริษัทเอกชน',
+  'ธุรกิจส่วนตัว/ฟรีแลนซ์',
+  'เกษตรกร',
+  'แม่บ้าน/พ่อบ้าน',
+  'เกษียณอายุ',
+  'อื่นๆ'
+] as const;
+
+export type Occupation = typeof OCCUPATIONS[number];

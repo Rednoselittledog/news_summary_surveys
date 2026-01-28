@@ -1,33 +1,31 @@
 import { create } from 'zustand';
-import { NewsItem, CompareAnswer, RatingAnswer, SurveyMode, ModelName } from './types';
+import { NewsItem, RatingAnswer, ModelName, Demographics } from './types';
 
 interface SurveyStore {
   // Configuration
-  newsCount: number;
-  mode: SurveyMode | null;
   sessionId: string | null;
 
-  // Selected news items
+  // Selected news items (always 5 items)
   selectedNews: NewsItem[];
   currentIndex: number;
 
-  // Shuffled models for compare mode
+  // Shuffled models for each news item (for color assignment)
   shuffledModels: Record<string, ModelName[]>;
 
   // Answers
-  compareAnswers: CompareAnswer[];
   ratingAnswers: RatingAnswer[];
 
+  // Demographics
+  demographics: Demographics | null;
+
   // Actions
-  setNewsCount: (count: number) => void;
-  setMode: (mode: SurveyMode) => void;
   setSessionId: (id: string) => void;
   setSelectedNews: (news: NewsItem[]) => void;
   setShuffledModels: (newsId: string, models: ModelName[]) => void;
   nextNews: () => void;
   previousNews: () => void;
-  addCompareAnswer: (answer: CompareAnswer) => void;
   addRatingAnswer: (answer: RatingAnswer) => void;
+  setDemographics: (demographics: Demographics) => void;
   reset: () => void;
   isLastNews: () => boolean;
   getCurrentNews: () => NewsItem | null;
@@ -35,18 +33,14 @@ interface SurveyStore {
 
 export const useSurveyStore = create<SurveyStore>((set, get) => ({
   // Initial state
-  newsCount: 3,
-  mode: null,
   sessionId: null,
   selectedNews: [],
   currentIndex: 0,
   shuffledModels: {},
-  compareAnswers: [],
   ratingAnswers: [],
+  demographics: null,
 
   // Actions
-  setNewsCount: (count) => set({ newsCount: count }),
-  setMode: (mode) => set({ mode }),
   setSessionId: (id) => set({ sessionId: id }),
   setSelectedNews: (news) => set({ selectedNews: news, currentIndex: 0 }),
 
@@ -65,26 +59,21 @@ export const useSurveyStore = create<SurveyStore>((set, get) => ({
       currentIndex: Math.max(state.currentIndex - 1, 0)
     })),
 
-  addCompareAnswer: (answer) =>
-    set((state) => ({
-      compareAnswers: [...state.compareAnswers, answer]
-    })),
-
   addRatingAnswer: (answer) =>
     set((state) => ({
       ratingAnswers: [...state.ratingAnswers, answer]
     })),
 
+  setDemographics: (demographics) => set({ demographics }),
+
   reset: () =>
     set({
-      newsCount: 3,
-      mode: null,
       sessionId: null,
       selectedNews: [],
       currentIndex: 0,
       shuffledModels: {},
-      compareAnswers: [],
-      ratingAnswers: []
+      ratingAnswers: [],
+      demographics: null
     }),
 
   isLastNews: () => {

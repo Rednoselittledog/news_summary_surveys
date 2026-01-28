@@ -30,15 +30,13 @@ export async function loadNewsData(): Promise<Record<Category, NewsItem[]>> {
 }
 
 export function selectNewsItems(
-  allNews: Record<Category, NewsItem[]>,
-  count: number
+  allNews: Record<Category, NewsItem[]>
 ): NewsItem[] {
-  const itemsPerCategory = count / 3;
-
+  // Fixed: 5 news items total (social: 2, economy: 2, technology: 1)
   const selected: NewsItem[] = [
-    ...allNews.social.slice(0, itemsPerCategory),
-    ...allNews.economy.slice(0, itemsPerCategory),
-    ...allNews.technology.slice(0, itemsPerCategory)
+    ...allNews.social.slice(0, 2),
+    ...allNews.economy.slice(0, 2),
+    ...allNews.technology.slice(0, 1)
   ];
 
   // Shuffle the array

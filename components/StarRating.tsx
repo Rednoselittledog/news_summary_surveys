@@ -6,7 +6,7 @@ import { Star } from 'lucide-react';
 interface StarRatingProps {
   value: number;
   onChange: (value: number) => void;
-  label: string;
+  label?: string;
 }
 
 export default function StarRating({ value, onChange, label }: StarRatingProps) {
@@ -14,7 +14,7 @@ export default function StarRating({ value, onChange, label }: StarRatingProps) 
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium text-foreground">{label}</label>
+      {label && <label className="text-sm font-medium text-foreground">{label}</label>}
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((star) => {
           const isActive = star <= (hoverValue || value);
@@ -30,8 +30,8 @@ export default function StarRating({ value, onChange, label }: StarRatingProps) 
               <Star
                 className={`w-8 h-8 transition-colors duration-150 ${
                   isActive
-                    ? 'fill-primary text-primary'
-                    : 'fill-none text-muted-foreground hover:text-primary/50'
+                    ? 'fill-yellow-400 text-yellow-400'
+                    : 'fill-none text-muted-foreground hover:text-yellow-400/50'
                 }`}
               />
             </button>
