@@ -22,13 +22,13 @@ export default function ThankYouPage() {
           <div className="flex justify-center mb-4">
             <CheckCircle className="w-20 h-20 text-primary" />
           </div>
-          <CardTitle className="heading-primary">ขอบคุณสำหรับการตอบแบบสำรวจ!</CardTitle>
+          <CardTitle className="heading-primary">ขอบคุณสำหรับการทำแบบสำรวจ</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 text-center">
           <p className="text-lg text-muted-foreground">
-            ข้อมูลของคุณได้รับการบันทึกเรียบร้อยแล้ว
+            ข้อมูลได้รับการบันทึกเรียบร้อย
             <br />
-            ขอบคุณที่สละเวลาช่วยเราในการประเมินโมเดล AI สำหรับการสรุปข่าว
+            
           </p>
 
           <div className="pt-4">

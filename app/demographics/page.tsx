@@ -70,7 +70,7 @@ export default function DemographicsPage() {
     try {
       const demographicsData: Demographics = {
         age: parseInt(age),
-        gender: gender as 'male' | 'female' | 'other',
+        gender: gender as 'male' | 'female' | 'lgbtq' | 'other',
         occupation
       };
 
@@ -104,7 +104,7 @@ export default function DemographicsPage() {
       <div className="w-full max-w-2xl mx-auto">
         <Card className="shadow-xl">
           <CardHeader className="text-center border-b bg-primary/5">
-            <CardTitle className="text-3xl">ข้อมูลส่วนตัว</CardTitle>
+            <CardTitle className="text-3xl">ข้อมูลส่วนบุคคล</CardTitle>
             <CardDescription className="text-base">
               กรุณากรอกข้อมูลเพื่อช่วยในการวิเคราะห์ผลการทดสอบ
             </CardDescription>
@@ -141,6 +141,7 @@ export default function DemographicsPage() {
                   <SelectContent>
                     <SelectItem value="male">ชาย</SelectItem>
                     <SelectItem value="female">หญิง</SelectItem>
+                    <SelectItem value="lgbtq">LGBTQ+</SelectItem>
                     <SelectItem value="other">ไม่ระบุ</SelectItem>
                   </SelectContent>
                 </Select>
@@ -179,7 +180,7 @@ export default function DemographicsPage() {
               <div className="bg-muted/50 border border-border rounded-lg p-4">
                 <p className="text-sm text-muted-foreground">
                   <span className="font-semibold text-foreground">หมายเหตุ:</span>{' '}
-                  ข้อมูลของคุณจะถูกเก็บเป็นความลับและใช้เพื่อการวิจัยเท่านั้น
+                  ข้อมูลของผู้เข้าร่วมแบบสอบถามจะถูกเก็บเป็นความลับและใช้เพื่อการวิจัยเท่านั้น
                   เราจะไม่เปิดเผยข้อมูลส่วนบุคคลของคุณต่อบุคคลที่สาม
                 </p>
               </div>

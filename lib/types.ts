@@ -22,11 +22,11 @@ export interface RatingAnswer {
 
 export interface Demographics {
   age: number;
-  gender: 'male' | 'female' | 'other';
+  gender: 'male' | 'female' | 'lgbtq' | 'other';
   occupation: string;
 }
 
-export type Gender = 'male' | 'female' | 'other';
+export type Gender = 'male' | 'female' | 'lgbtq' | 'other';
 
 export const OCCUPATIONS = [
   'นักเรียน/นักศึกษา',
